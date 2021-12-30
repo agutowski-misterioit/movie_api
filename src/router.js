@@ -1,0 +1,11 @@
+"use strict";
+const express = require("express");
+const middleware = require("./middleware");
+const validator = require("./validator");
+const controller = require("./controller");
+const router = express.Router();
+router.get('/', controller.index);
+router.get('/movie/', validator.titleQuery, controller.findMovie);
+router.get('/movies/', controller.allMovies);
+router.post('/movies/', validator.reqBody, middleware.auth, middleware.basicUser, controller.addMovie);
+module.exports = router;

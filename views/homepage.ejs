@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title><%= title %></title>
+    
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+    </head>
+<body class="bg-light">
+    <div class="container-sm py-5" style="max-width: 700px;">
+        <div class="pt-5 pb-3 d-flex justify-content-center">
+            <h2><a style="text-decoration: none; color:black;" href="/">Search Movies</a></h2>
+        </div>
+<!-- SEARCH CARD -->
+        <div class="card">
+            <div class="card-body">
+                <div class="row">
+                    <div class="col mx-2">
+                        /findMovie GET
+                    </div>
+                </div>
+                <form method="GET" action="/movie/">
+                    <div class="row">
+                        <div class="col">
+                            <input class="form-control" type="text" name="title" placeholder="Title">
+                        </div>
+                        <div class="col-2">
+                            <input class="btn btn-primary" type="submit" value="Find">
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+<!-- LOGIN CARD -->
+    
+        <div class="card mt-5">
+            <div class="card-body">
+                <div class="row mb-3">
+                    <div class="col mx-2">
+                        /auth POST
+                    </div>
+                </div>
+                <form action="/auth" method="POST">
+                <div class="row">
+                    <div class="col">
+                        <input class="form-control" type="text" name="username" placeholder="Username">
+                    </div>
+                    <div class="col">
+                        <input class="form-control" type="password" name="password" placeholder="Password">
+                    </div>
+                    <div class="col-2">
+                        <button class="btn btn-primary">Login</button>
+                    </div>
+                </div>
+                </form>
+            </div>
+        </div>
+    
+        <div class="w-100 d-flex justify-content-center py-5">
+            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addMovieModal">Add movie</button>
+
+            <div class="modal fade" id="addMovieModal" tabindex="-1" aria-labelledby="addMovieModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="addMovieModalLabel">New movie</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                    <form id="addMovie" action="/movies" method="POST">
+                        <input class="form-control mb-2" type="text" name="token" placeholder="Token">
+                        <input class="form-control" type="text" name="title" placeholder="Title">
+                    </form>
+                    </div>
+                    <div class="modal-footer">
+                    <input type="submit" form="addMovie" class="btn btn-primary" value="Save">
+                    </div>
+                </div>
+                </div>
+            </div>
+        </div>
+    
+
+    </div>
+</body>
+</html>

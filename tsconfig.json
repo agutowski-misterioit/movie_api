@@ -1,0 +1,11 @@
+{
+  "compilerOptions": {
+    "moduleResolution": "node",
+    "target": "es2016",
+    "module": "commonjs",
+    "outDir": "./src",
+    "allowJs": true
+  },
+  "include": ["ts_src/**/*.ts"],
+  "exclude": ["node_modules", ".vscode"]
+}
