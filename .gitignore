@@ -4,6 +4,6 @@ node_modules/
 mongo
 mongo-volume/
 
-src/
+src/*
 !src/server.js
 !src/auth.js
