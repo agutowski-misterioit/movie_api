@@ -3,3 +3,7 @@ node_modules/
 .env
 mongo
 mongo-volume/
+
+src/
+!src/server.js
+!src/auth.js
