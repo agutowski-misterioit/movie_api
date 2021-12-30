@@ -1,6 +1,6 @@
 # API documentation v0.1
 
-# Introduction
+## Introduction
 <!-- there will be -->
 
 1. How to start application
