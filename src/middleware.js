@@ -9,7 +9,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.basicUser = exports.auth = void 0;
+exports.basicUser = exports.checkRole = exports.auth = void 0;
 const model = require("./model");
 const enum_1 = require("./enum");
 const authService = require("./authService");
@@ -17,15 +17,33 @@ const authService = require("./authService");
 const auth = (req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         const login = yield authService.login(req.body.username, req.body.password);
+        if (login.status === enum_1.StatusCode.Unauthorized) {
+            throw new Error(login.error);
+        }
         res.status(login.status).header('Token', login.token);
         next();
     }
     catch (e) {
         return res.status(enum_1.StatusCode.Unauthorized).json(e.message);
     }
-    // res.status(StatusCode.Ok).send();
 });
 exports.auth = auth;
+const checkRole = (req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
+    try {
+        const token = req.headers('token');
+        const token2 = token.json();
+        console.log(token2);
+        const role = yield authService.check("nothing");
+        if (role === 'basic') {
+            throw new Error("some error");
+        }
+        next();
+    }
+    catch (e) {
+        return res.status(enum_1.StatusCode.Unauthorized).json(e.message);
+    }
+});
+exports.checkRole = checkRole;
 const basicUser = (req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
     if (res.locals.role == 'basic') {
         try {

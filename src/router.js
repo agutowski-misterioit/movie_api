@@ -7,5 +7,5 @@ const router = express.Router();
 router.get('/', controller.index);
 router.get('/movie/', validator.titleQuery, controller.findMovie);
 router.get('/movies/', controller.allMovies);
-router.post('/movies/', validator.reqBody, middleware.auth, middleware.basicUser, controller.addMovie);
+router.post('/movies/', validator.reqBody, middleware.auth, middleware.checkRole, controller.addMovie);
 module.exports = router;

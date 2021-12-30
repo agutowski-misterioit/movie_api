@@ -13,3 +13,15 @@ services:
     environment:
       JWT_SECRET: ${JWT_SECRET}
       APIKEY: ${APIKEY}
+  # database:
+  #   image: 'mongo'
+  #   container_name: 'node-task-db'
+  #   environment:
+  #     - MONGO_INITDB_DATABASE=${MONGO_DATABASE}
+  #     - MONGO_INITDB_ROOT_USERNAME=${MONGO_ROOT_USR}
+  #     - MONGO_INITDB_ROOT_PASSWORD=${MONGO_ROOT_PWD}
+  #   volumes:
+  #     - ./mongo/init-mongo.js:/docker-entrypoint-initdb.d/init-mongo.js:ro
+  #     - ./mongo-volume:/data/db
+  #   ports:
+  #     - '27017-27019:27017-27019'

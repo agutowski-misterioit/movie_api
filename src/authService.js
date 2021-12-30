@@ -9,7 +9,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.login = void 0;
+exports.check = exports.login = void 0;
 const dotenv = require("dotenv");
 const enum_1 = require("./enum");
 dotenv.config();
@@ -19,6 +19,9 @@ const login = (username, password) => __awaiter(void 0, void 0, void 0, function
     const auth = authFactory(JWT_SECRET);
     try {
         const token = yield auth(username, password);
+        if (!token) {
+            throw new Error("Invalid username or password");
+        }
         return { status: enum_1.StatusCode.Ok, token: token };
     }
     catch (e) {
@@ -29,3 +32,14 @@ const login = (username, password) => __awaiter(void 0, void 0, void 0, function
     }
 });
 exports.login = login;
+const check = (token) => __awaiter(void 0, void 0, void 0, function* () {
+    try {
+        const answer = token;
+        console.log(answer);
+        return answer;
+    }
+    catch (e) {
+        return e.message;
+    }
+});
+exports.check = check;

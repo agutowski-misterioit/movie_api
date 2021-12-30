@@ -21,7 +21,7 @@ router.get('/movies/',
 router.post('/movies/',
     validator.reqBody,
     middleware.auth,
-    middleware.basicUser,
+    middleware.checkRole,
     controller.addMovie
 );
 

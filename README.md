@@ -1,7 +1,7 @@
 # API4Movies | Documentation
 
-**Introduction**
-This is completing the recruitment task - API for movies.
+**Introduction**<br/>
+This is an application made for recruitment - API for movies.
 <!-- there will be -->
 
 1. How to start application

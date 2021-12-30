@@ -11,12 +11,29 @@ interface UserInterface{
 export const auth = async (req, res, next) => {
     try{
         const login = await authService.login(req.body.username, req.body.password);
+        if(login.status === StatusCode.Unauthorized){
+            throw new Error(login.error);
+        }
         res.status(login.status).header('Token', login.token);
         next();
     }catch(e){
         return res.status(StatusCode.Unauthorized).json(e.message);
     }
-    // res.status(StatusCode.Ok).send();
+};
+
+export const checkRole = async(req, res, next) => {
+    try{
+        const token = req.headers('token');
+        const token2 = token.json();
+        console.log(token2);
+        const role = await authService.check("nothing");
+        if( role === 'basic' ){
+            throw new Error("some error");
+        }
+        next();
+    }catch(e){
+        return res.status(StatusCode.Unauthorized).json(e.message);
+    }
 };
 
 export const basicUser = async (req, res, next) => {
