@@ -1,6 +1,9 @@
-# API documentation v0.1
+# API4Movies
+
+**DOCUMENTATION**
 
 ## Introduction
+This is completing the recruitment task - API for movies.
 <!-- there will be -->
 
 1. How to start application
