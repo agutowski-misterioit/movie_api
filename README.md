@@ -1,8 +1,6 @@
-# API4Movies
+# API4Movies | Documentation
 
-**DOCUMENTATION**
-
-## Introduction
+**Introduction**
 This is completing the recruitment task - API for movies.
 <!-- there will be -->
 
