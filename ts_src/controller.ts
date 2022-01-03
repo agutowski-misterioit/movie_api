@@ -44,11 +44,11 @@ export const addMovie = async(req, res) => {
     }
     
     return res.json(dataFromOMDBAPI);
+    // add movie to DB service
   }catch(e){
     return res.status(StatusCode.BadRequest).json(e.message);
   }
-  // check if movie exist Service
-  
+
   // when ok - add movie Service
 
 

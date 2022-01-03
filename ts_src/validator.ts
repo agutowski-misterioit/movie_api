@@ -11,17 +11,10 @@ export const titleQuery = (req, res, next) => {
     }
 };
 
-export const reqBody = (req, res, next) => {
-    const { title, username, password } = req.body;
+export const titleBody = (req, res, next) => {
     try{
-        if( !title ){
+        if( !req.body.title ){
             throw new Error("Title undefined");
-        }
-        if( !username ){
-            throw new Error("Username undefined");
-        }
-        if( !password ){
-            throw new Error("Password undefined");
         }
         next();
     }catch(e){

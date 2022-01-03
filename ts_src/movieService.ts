@@ -1,7 +1,6 @@
 import * as dotenv from "dotenv";
 import * as model from "./model";
 import * as db from "./dbconfig";
-import { StatusCode } from "./enum";
 const { default: fetch } = require("node-fetch-cjs");
 dotenv.config();
 
@@ -59,6 +58,25 @@ export const fetchOMDBAPI = async(title:string) => {
     }catch(e){
         return e.message;
     }
+};
+
+export const checkBasicUserCanAddInThisMonth = async(userId:Number) => {
+    try{
+        const fromDate = new Date(new Date().getFullYear(), new Date().getMonth(), -1);
+        const toDate = new Date(fromDate.getFullYear(), fromDate.getMonth() + 1, 0);
+        
+        await db.con();
+        const moviesInThisMonth = await model.Movies.countDocuments({ "user_id": userId, "createdAt": {'$gte': fromDate, '$lte': toDate} });
+        await db.dc();
+
+        if(moviesInThisMonth >= 5){
+            throw new Error;
+        };
+
+        return true;
+    }catch(e){
+        return false;
+    };
 };
 
 export const addMovieService = async() => {
